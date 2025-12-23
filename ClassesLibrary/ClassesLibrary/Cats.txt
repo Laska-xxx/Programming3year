@@ -1,0 +1,20 @@
+A cute cat with fluffiness: 118
+Fluffiness check: OwO
+A tiger with weight: 118,18527597642091 fluffiness: 43
+Fluffiness check: Kycb!
+A cute cat with fluffiness: 51
+Fluffiness check: Heavy
+A cute cat with fluffiness: 43
+Fluffiness check: Medium
+A cute cat with fluffiness: 64
+Fluffiness check: Heavy
+A tiger with weight: 78,0691536249228 fluffiness: 15
+Fluffiness check: Kycb!
+A tiger with weight: 118,58436491468173 fluffiness: 53
+Fluffiness check: Kycb!
+A tiger with weight: 109,62398316404305 fluffiness: 39
+Fluffiness check: Kycb!
+A cute cat with fluffiness: 17
+Fluffiness check: Slightly
+A cute cat with fluffiness: 13
+Fluffiness check: Slightly
