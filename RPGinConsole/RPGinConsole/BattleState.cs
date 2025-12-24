@@ -19,32 +19,7 @@
 
             DisplayStats(player, context);
 
-            Console.WriteLine("--------Your Turn--------\nEnter your choose:" +
-                "\n     1 - Attack" +
-                $"\n     2 - Heal yourself ({player.Heals - player.CurHeal}/{player.Heals})");
-
-            switch (Console.ReadLine())
-            {
-                case "1":
-                    Battle(player, enemy, context);
-                    break;
-                case "2":
-                    if (context.Player.Heal())
-                    {
-                        Console.WriteLine($"You have regained your health, current health: {player.Health}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("You have already spent all heal points!");
-                        return;
-                    }
-                    break;
-                default:
-                    Console.WriteLine("Please enter only 1 or 2:" +
-                    "\n     Attack - 1" +
-                    $"\n     Heal yourself ({player.Heals - player.CurHeal}/{player.Heals})");
-                    return;
-            }
+            Battle(player, enemy, context);
 
             if (context.Player.HasWon)
             {
@@ -56,12 +31,14 @@
             }
             else if (!enemy.IsAlive)
             {
-                context.State = new LevelUpState();
+                context.State = new BetweenBattlesState();
             }
         }
 
         private void Battle(Player player, Enemy enemy, GameContext context)
         {
+            Console.WriteLine("--------Your Turn--------");
+
             int playerDamage = context.DamageCalculator.CalculateDamage(player.AttackPower, player.CriticalChance);
             enemy.TakeDamage(playerDamage);
             Console.WriteLine($"You have done {enemy.Name} the {playerDamage} damage");
@@ -72,7 +49,7 @@
 
             if (!enemy.IsAlive)
             {
-                Console.WriteLine($"\nYou are won {enemy.Name}!");
+                Console.WriteLine($"------You are won {enemy.Name}!------");
 
                 player.AddExperience(enemy.Experience);
                 player.AddEnemyDefeated();
@@ -81,6 +58,8 @@
                 Console.WriteLine($"Enemy defeated: {player.EnemysDefeated}/15");
                 return;
             }
+
+            Console.WriteLine("--------Enemy Turn--------");
 
             player.TakeDamage(enemy.AttackPower);
             Console.WriteLine($"{enemy.Name} has dealt you {enemy.AttackPower} damage");
